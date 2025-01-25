@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+    <title>Каталог мотоциклів</title>
+    <style>
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 колонки за замовчуванням */
+            gap: 20px;
+        }
+    
+        @media (max-width: 767px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr); /* 3 колонки для мобільних пристроїв */
+            }
+        }
+    </style>
+    
+    <style>
+
+        
+        .motorcycle {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .motorcycle img {
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .motorcycle:hover img {
+            transform: scale(1.2);
+        }
+
+        
+
+        .product-card {
+            text-align: center;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const motorcycles = document.querySelectorAll(".motorcycle");
+
+            motorcycles.forEach(moto => {
+                let timer;
+
+                moto.addEventListener("mouseenter", () => {
+                    timer = setTimeout(() => {
+                        window.location.href = moto.dataset.url;
+                    }, 600);
+                });
+
+                moto.addEventListener("mouseleave", () => {
+                    clearTimeout(timer);
+                });
+            });
+        });
+    </script>
+   
+    
+</head>
+<body>
+    <nav class="navbar"></nav>
+        <div class="logo">
+            <a href="catalog2.html">
+                <img src="mototek.png" alt="Логотип сайту">
+                
+            </a>
+        </div>
+    <nav class="navbar">
+        <ul>
+            <li><a href="catalog2.html">Каталог</a></li>
+            <li><a href="endyro.html">Ендуро</a></li>
+            <li><a href="street.html">Дорожній</a></li>
+            <li><a href="contacts.html">Контакти</a></li>
+            <li><a href="about.html">Про нас</a></li>
+            <li>
+                <a href="trash.html">
+                    <button class="btn"><i class="fa fa-trash"></i></button>
+                </a>
+            </li>
+                
+        </ul>
+      
+    </nav>
+
+    <h1>Каталог Geon</h1>
+
+    <div class="product-grid">
+        <div class="product-card motorcycle" data-url="index.html">
+            <img src="geon.jpg" alt="Geon X-Road Light 200">
+            <h2><a href="index.html">Geon X-Road Light 200</a></h2>
+            <p class="price">62 000 грн</p>
+            
+        </div>
+
+        <div class="product-card motorcycle" data-url="geongns.html">
+            <img src="geongns.jpg" alt="Geon Dakar 300">
+            <h2><a href="geongns.html">Geon Dakar 300R</a></h2>
+            <p class="price">134 000 грн</p>
+        </div>
+
+        <div class="product-card motorcycle" data-url="geonter.html">
+            <img src="geonter.jpg" alt="Geon TerraX 250">
+            <h2><a href="geonter.html">Geon TerraX 250</a></h2>
+            <p class="price">79 999 грн</p>
+        </div>
+
+        <div class="product-card motorcycle" data-url="geonsc.html">
+            <img src="geonsc.jpg" alt="Geon Scrambler 250">
+            <h2><a href="geonsc.html">Geon Scrambler 250</a></h2>
+            <p class="price">80 209 грн</p>
+        </div>
+
+        <div class="product-card motorcycle" data-url="geoncr6.html">
+            <img src="geoncr6.jpg" alt="Geon CR6s 250">
+            <h2><a href="geoncr6.html">Geon CR6s 250</a></h2>
+            <p class="price">68 499 грн</p>
+        </div>
+
+        <div class="product-card motorcycle" data-url="geonstinger.html">
+            <img src="stinger.jpg" alt="Geon Stinger 250R">
+            <h2><a href="geonstinger.html">Geon Stinger 250R</a></h2>
+            <p class="price">104 000 грн</p>
+        </div>
+
+        <div class="product-card motorcycle" data-url="geongnx.html">
+            <img src="geongnx.jpg" alt="Geon Dakar GNX 300NB Motard">
+            <h2><a href="geongnx.html">Geon Dakar GNX 300NB Motard</a></h2>
+            <p class="price">128 000 грн</p>
+        </div>
+
+        <div class="product-card motorcycle" data-url="geonadx.html">
+            <img src="geonadx.jpg" alt="GEON ADX 250">
+            <h2><a href="geonadx.html">GEON ADX 250</a></h2>
+            <p class="price">74 799 грн</p>
+        </div>
+    </div>
+    <h1>Каталог </h1>
+
+    <div class="product-grid">
+        <div class="product-card motorcycle" data-url="index.html">
+            <img src="geon.jpg" alt="Geon X-Road Light 200">
+            <h2><a href="index.html">Geon X-Road Light 200</a></h2>
+            <p class="price">62 000 грн</p>
+        </div>
+
+        <div class="product-card motorcycle" data-url="geongns.html">
+            <img src="geongns.jpg" alt="Geon Dakar 300">
+            <h2><a href="geongns.html">Geon Dakar 300R</a></h2>
+            <p class="price">134 000 грн</p>
+        </div>
+
+        <div class="product-card motorcycle" data-url="geonter.html">
+            <img src="geonter.jpg" alt="Geon TerraX 250">
+            <h2><a href="geonter.html">Geon TerraX 250</a></h2>
+            <p class="price">79 999 грн</p>
+        </div>
+
+        <div class="product-card motorcycle" data-url="geonsc.html">
+            <img src="geonsc.jpg" alt="Geon Scrambler 250">
+            <h2><a href="geonsc.html">Geon Scrambler 250</a></h2>
+            <p class="price">80 209 грн</p>
+        </div>
+
+        <div class="product-card motorcycle" data-url="geoncr6.html">
+            <img src="geoncr6.jpg" alt="Geon CR6s 250">
+            <h2><a href="geoncr6.html">Geon CR6s 250</a></h2>
+            <p class="price">68 499 грн</p>
+        </div>
+
+        <div class="product-card motorcycle" data-url="geonstinger.html">
+            <img src="stinger.jpg" alt="Geon Stinger 250R">
+            <h2><a href="geonstinger.html">Geon Stinger 250R</a></h2>
+            <p class="price">104 000 грн</p>
+        </div>
+
+        <div class="product-card motorcycle" data-url="geongnx.html">
+            <img src="geongnx.jpg" alt="Geon Dakar GNX 300NB Motard">
+            <h2><a href="geongnx.html">Geon Dakar GNX 300NB Motard</a></h2>
+            <p class="price">128 000 грн</p>
+        </div>
+
+        <div class="product-card motorcycle" data-url="geonadx.html">
+            <img src="geonadx.jpg" alt="GEON ADX 250">
+            <h2><a href="geonadx.html">GEON ADX 250</a></h2>
+            <p class="price">74 799 грн</p>
+        </div>
+
+        <div class="product-card motorcycle" data-url="ktm.html">
+            <img src="ktm.jpg" alt="ktm 390 duke">
+            <h2><a href="ktm.html">ktm 390 duke</a></h2>
+            <p class="price">262 000 грн</p>
+        </div>
+
+        <div class="product-card motorcycle" data-url="bajaj.html">
+            <img src="bajaj.jpg" alt="bajaj Dominar 400">
+            <h2><a href="bajaj.html">bajaj Dominar 400</a></h2>
+            <p class="price">196 999 грн</p>
+        </div>
+
+        <div class="product-card motorcycle" data-url="pulsar.html">
+            <img src="pulsar.jpg" alt="Bajaj Pulsar NS200">
+            <h2><a href="pulsar.html">Bajaj Pulsar NS200</a></h2>
+            <p class="price">128 000 грн</p>
+        </div>
+
+        <div class="product-card motorcycle" data-url="kovimax.html">
+            <img src="KOVI.jpg" alt="KOVI MAX 300">
+            <h2><a href="kovimax.html">KOVI MAX 300</a></h2>
+            <p class="price">104 000 грн</p>
+        </div>
+
+    </div>
+</body>
+</html>

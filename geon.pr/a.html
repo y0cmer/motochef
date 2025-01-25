@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ваш кошик</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .cart-item-title {
+            font-weight: bold;
+        }
+        .cart-total {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .empty-cart {
+            text-align: center;
+            font-size: 18px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ваш кошик</h1>
+        <div id="cart-items"></div>
+        <div id="cart-total" class="cart-total"></div>
+    </div>
+    <script>
+        // Функція для отримання даних з LocalStorage
+        function getCartData() {
+            return {
+                motorcycle: localStorage.getItem('motorcycle') || 'Geon X-Road Light 200',
+                engine: localStorage.getItem('engine') || '200 кубів',
+                exhaust: localStorage.getItem('exhaust') || 'Стандартний',
+                tuning: localStorage.getItem('tuning') || 'Стандартний',
+                totalPrice: localStorage.getItem('totalPrice') || '₴85,000',
+            };
+        }
+
+        // Функція для відображення даних у кошику
+        function displayCart() {
+            const cartData = getCartData();
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalContainer = document.getElementById('cart-total');
+
+            // Очистити попередній вміст
+            cartItemsContainer.innerHTML = '';
+
+            // Якщо є мотоцикл, додати його до списку
+            if (cartData.motorcycle) {
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <span class="cart-item-title">${cartData.motorcycle}</span>
+                    <span>${cartData.totalPrice}</span>
+                `;
+                cartItemsContainer.appendChild(cartItem);
+
+                // Відобразити загальну суму
+                cartTotalContainer.textContent = `Загальна сума: ${cartData.totalPrice}`;
+            } else {
+                // Якщо кошик порожній
+                cartItemsContainer.innerHTML = '<p class="empty-cart">Ваш кошик порожній</p>';
+                cartTotalContainer.textContent = '';
+            }
+        }
+
+        // Виклик функції для відображення
+        displayCart();
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оплата</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        .payment-methods {
+            margin-top: 30px;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Виберіть метод оплати</h1>
+    <div class="payment-methods">
+        <!-- Кнопка для оплати наличними -->
+        <a href="#cash" class="btn">Оплата наличними</a>
+        <!-- Кнопка для оплати через картку -->
+        <a href="#card" class="btn">Оплата через картку</a>
+    </div>
+
+    <div id="cash" style="display:none; margin-top: 30px;">
+        <h2>Оплата наличними</h2>
+        <p>Для оплати наличними, будь ласка, зв'яжіться з нами через електронну пошту або телефон.</p>
+        <p>Наші реквізити: <strong>email@example.com</strong> або <strong>+380 123 456 789</strong></p>
+    </div>
+
+    <div id="card" style="display:none; margin-top: 30px;">
+        <h2>Оплата через картку</h2>
+        <p>Для оплати через картку, скануйте QR-код або використовуйте реквізити:</p>
+        <p><strong>Номер картки: 4111 2222 3333 4444</strong></p>
+        <p>Якщо вам зручніше, ви також можете скористатися QR-кодом для оплати:</p>
+        <img src="your-qr-code-image-url.png" alt="QR код для оплати" style="width: 200px; height: 200px;">
+    </div>
+
+    <script>
+        // Перемикання між блоками для оплат
+        document.querySelectorAll('.btn').forEach(function(button) {
+            button.addEventListener('click', function() {
+                var targetId = this.getAttribute('href').substring(1);
+                document.querySelectorAll('div[id]').forEach(function(div) {
+                    div.style.display = 'none';
+                });
+                document.getElementById(targetId).style.display = 'block';
+            });
+        });
+    </script>
+
+</body>
+</html>

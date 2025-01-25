@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сторінка Оплати</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .payment-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 600px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .motorcycle-preview {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .motorcycle-preview img {
+            max-width: 150px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .exhaust-options img {
+            max-width: 80px;
+            margin-right: 10px;
+        }
+        .exhaust-options {
+            display: flex;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="payment-container">
+    <h2>Оплата</h2>
+
+    <!-- Попередній перегляд мотоцикла та ціна -->
+    <div class="motorcycle-preview">
+        <img id="motorcycle-image" src="yamaha_r3.jpg" alt="Мотоцикл">
+        <div>
+            <span class="price" id="motorcycle-price">₴50,000</span>
+        </div>
+    </div>
+
+    <!-- Поле вибору мотоцикла -->
+    <label for="motorcycle">Виберіть модель мотоцикла:</label>
+    <select id="motorcycle" name="motorcycle" required>
+        <option value="Yamaha R3" data-price="50000" data-image="yamaha_r3.jpg">Yamaha R3</option>
+        <option value="Honda CBR500R" data-price="60000" data-image="honda_cbr500r.jpg">Honda CBR500R</option>
+        <option value="Kawasaki Ninja 400" data-price="55000" data-image="kawasaki_ninja_400.jpg">Kawasaki Ninja 400</option>
+    </select>
+
+    <!-- Поле вибору комплектації -->
+    <label for="engine">Кубатура:</label>
+    <select id="engine" name="engine" required>
+        <option value="200 кубів">200 кубів</option>
+        <option value="250 кубів">250 кубів</option>
+    </select>
+
+    <!-- Поле вибору вихлопу -->
+    <label for="exhaust">Вихлоп:</label>
+    <div class="exhaust-options">
+        <input type="radio" id="standard" name="exhaust" value="Стандартний" checked>
+        <label for="standard"><img src="standard_exhaust.jpg" alt="Стандартний"> Стандартний</label>
+
+        <input type="radio" id="akrapovic" name="exhaust" value="Akrapovic">
+        <label for="akrapovic"><img src="akrapovic_exhaust.jpg" alt="Akrapovic"> Akrapovic</label>
+
+        <input type="radio" id="sc_project" name="exhaust" value="SC Project">
+        <label for="sc_project"><img src="sc_project_exhaust.jpg" alt="SC Project"> SC Project</label>
+    </div>
+
+    <!-- Поле вибору тюнінгу -->
+    <label for="tuning">Тюнінг:</label>
+    <select id="tuning" name="tuning" required>
+        <option value="Стандартний">Стандартний</option>
+        <option value="Тюнінгований вихлоп">Тюнінгований вихлоп</option>
+        <option value="Індивідуальний колір">Індивідуальний колір</option>
+    </select>
+
+    <!-- Кнопка для оплати -->
+    <button type="button" onclick="saveAndRedirect()">Оплатити</button>
+</div>
+
+<script>
+    const motorcycleSelect = document.getElementById('motorcycle');
+    const motorcycleImage = document.getElementById('motorcycle-image');
+    const motorcyclePrice = document.getElementById('motorcycle-price');
+
+    motorcycleSelect.addEventListener('change', function() {
+        const selectedOption = motorcycleSelect.options[motorcycleSelect.selectedIndex];
+        motorcycleImage.src = selectedOption.getAttribute('data-image');
+        motorcyclePrice.textContent = '₴' + selectedOption.getAttribute('data-price');
+    });
+
+    function saveAndRedirect() {
+        const selectedMotorcycle = document.getElementById('motorcycle').value;
+        const selectedEngine = document.getElementById('engine').value;
+        const selectedExhaust = document.querySelector('input[name="exhaust"]:checked').value;
+        const selectedTuning = document.getElementById('tuning').value;
+        const totalPrice = document.getElementById('motorcycle-price').textContent;
+
+        // Зберігаємо вибір в локальне сховище
+        localStorage.setItem('motorcycle', selectedMotorcycle);
+        localStorage.setItem('engine', selectedEngine);
+        localStorage.setItem('exhaust', selectedExhaust);
+        localStorage.setItem('tuning', selectedTuning);
+        localStorage.setItem('totalPrice', totalPrice);
+
+        // Переходимо на сторінку підсумку замовлення
+        window.location.href = 'dostavka.html';
+    }
+</script>
+
+</body>
+</html>
